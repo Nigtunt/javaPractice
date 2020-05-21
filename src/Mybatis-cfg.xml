@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <!--设置是否允许缓存-->
+        <setting name="cacheEnabled" value="true"/>
+        <!--设置日志输出的目标-->
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+    </settings>
+    <!--别名  使用后不用输入全部路径-->
+    <typeAliases>
+        <package name="Mybatis.pojo"/>
+    </typeAliases>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/mybatistest"/>
+                <property name="username" value="root"/>
+                <property name="password" value="root"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="Mybatis/pojo/Category.xml"/>
+        <mapper resource="Mybatis/pojo/Product.xml"/>
+        <mapper resource="Mybatis/pojo/Order.xml"/>
+        <mapper class="Mybatis.mapper.categoryMapper"/>
+    </mappers>
+</configuration>

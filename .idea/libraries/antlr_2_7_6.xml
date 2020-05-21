@@ -1,0 +1,19 @@
+<component name="libraryTable">
+  <library name="antlr-2.7.6">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/hibernate/lib/antlr-2.7.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/hibernate/lib/commons-collections-3.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/hibernate/lib/commons-logging-1.1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/hibernate/lib/commons-logging-api-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/hibernate/lib/dom4j-1.6.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/hibernate/lib/ehcache-1.2.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/hibernate/lib/hibernate-jpa-2.0-api-1.0.1.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/hibernate/lib/hibernate3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/hibernate/lib/javassist-3.12.0.GA.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/hibernate/lib/jta-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/hibernate/lib/slf4j-api-1.6.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

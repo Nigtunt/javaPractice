@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Mybatis.pojo">
+    <resultMap id="productBean" type="Product">
+        <id column="pid" property="id"/>
+        <result column="pname" property="name"/>
+        <result column="price" property="price"/>
+        <association property="category" javaType="category">
+            <id column="cid" property="id"/>
+            <result column="cname" property="name"/>
+        </association>
+    </resultMap>
+    <select id="listProduct" resultMap="productBean">
+        select price,c.id 'cid',p.id 'pid', c.name 'cname', p.name 'pname' from product_ p left join category_ c on c.id = p.cid
+    </select>
+    <select id="getProduct" resultMap="productBean">
+        select price,c.id 'cid',p.id 'pid', c.name 'cname', p.name 'pname'
+        from product_ p left join category_ c on c.id = p.cid
+        where p.id=#{id}
+    </select>
+    <update id="updateProduct" parameterType="Product">
+        update product_ set cid=#{category.id} where id=#{id}
+    </update>
+    <select id="listProduct_IF" resultType="Product">
+        select * from product_
+        <if test="name!=null">
+            where name like concat('%',#{name},'%')
+        </if>
+    </select>
+    <!--example-->
+    <!--<select id="selectStudentsByNameAndSex" resultType="student">-->
+        <!--SELECT id,name,sex from student-->
+        <!--&lt;!&ndash;1、如果两个if只要有一个有输出就会在sql中添加 where&ndash;&gt;-->
+        <!--<where>-->
+            <!--<if test="name!=null and name!=''">-->
+                <!--&lt;!&ndash;2、如果where后以and或or开始则会删除and或or&ndash;&gt;-->
+                <!--and name like concat(concat('%',#{name}),'%');-->
+            <!--</if>-->
+            <!--<if test="sex!=null and sex!=''">-->
+                <!--and sex=#{sex}-->
+            <!--</if>-->
+        <!--</where>-->
+    <!--</select>-->
+    <!--<update id="updateStudent" parameterType="student">-->
+        <!--update student-->
+        <!--&lt;!&ndash;自动添加set&ndash;&gt;-->
+        <!--<set>-->
+            <!--&lt;!&ndash;智能处理逗号问题&ndash;&gt;-->
+            <!--<if test="name!=null and name.length()>0">-->
+                <!--name=#{name}-->
+            <!--</if>-->
+            <!--<if test="sex!=null and sex.length()>0">-->
+                <!--sex=#{sex}-->
+            <!--</if>-->
+        <!--</set>-->
+        <!--where id=#{id}-->
+    <!--</update>-->
+    <!--<select id="selectStudentsByNameAndSex" resultType="student">-->
+        <!--SELECT id,name,sex from student-->
+        <!--<where>-->
+            <!--<choose>-->
+                <!--<when test="id>0">-->
+                    <!--id=#{id}-->
+                <!--</when>-->
+                <!--<when test="name!=null and name!=''">-->
+                    <!--name=#{name}-->
+                <!--</when>-->
+                <!--<otherwise>-->
+                    <!--sex=#{sex}-->
+                <!--</otherwise>-->
+            <!--</choose>-->
+        <!--</where>-->
+    <!--</select>-->
+    <!--<trim prefix = "where" prefixOverrides="and|or" >-->
+        <!--...-->
+    <!--</trim>-->
+    <!--<trim prefix="set" suffixOverrides=",">-->
+        <!--...-->
+    <!--</trim>-->
+    <delete id="deleteStudents">
+        delete from student where id in
+        <foreach collection="list" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

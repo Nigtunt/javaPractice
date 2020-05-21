@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<bookstore>
+  <book id="1">
+    <name>他改变了中国</name>
+    <author>罗伯特</author>
+    <price>50</price>
+  </book>
+  <book id="2" fake="true">
+    <name>梁家河</name>
+    <author>xiong</author>
+    <price>5</price>
+  </book>
+</bookstore>
